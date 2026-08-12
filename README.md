@@ -3,6 +3,8 @@
 > Enterprise claims adjudication engine — Spring Boot + MongoDB rules engine, Cucumber/Gherkin business-rule specs, and an Angular auditor dashboard with a full immutable audit trail.
 
 **GitHub:** https://github.com/Sakshi3027/claims-adjudication-platform  
+**Live:** https://claims-adjudication-platform-1.onrender.com  
+**Live API:** https://claims-adjudication-platform.onrender.com/api/claims  
 **Stack:** Java 21 · Spring Boot · MongoDB · Cucumber · Angular · RxJS · Docker
 
 ---
@@ -128,7 +130,23 @@ That comes back flagged for manual review, with the reason pointing at the missi
 
 ## Status
 
-Backend: 13/13 tests passing across all four Java modules. Frontend builds clean. Runs fully locally via Docker Compose — not yet deployed to a public URL.
+Backend: 13/13 tests passing across all four Java modules. Frontend builds clean. Deployed and live - API and frontend running as separate Render web services, database on MongoDB Atlas.
+
+---
+
+## Deployment
+
+Deployed across three free-tier services:
+
+| Piece | Where | Notes |
+|-------|-------|-------|
+| Database | MongoDB Atlas (M0 free cluster) | Network access opened to allow connections from Render's servers |
+| API | Render (Docker web service, `api/Dockerfile`) | `MONGODB_URI` set as an environment variable, points at the Atlas cluster |
+| Frontend | Render (Docker web service, `frontend/Dockerfile`) | Static Angular build served by nginx; calls the live API directly by its full URL, baked in at build time via `environment.prod.ts` |
+
+CORS is explicitly configured on the API (`WebConfig`) to allow requests from the deployed frontend's origin.
+
+Free-tier Render instances spin down after inactivity, so the first request after a while can take 30-50 seconds to respond while it spins back up.
 
 ---
 
