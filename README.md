@@ -133,4 +133,4 @@ This sits in the same claims-processing project family as [ClaimStream](https://
 ---
 
 Built by [Sakshi Chavan](https://github.com/Sakshi3027)  
-AI Engineer | LangGraph • Databricks • RAG | MS Data Science | https://medium.com/@SakshiChavan
+AI Engineer | LangGraph • Databricks • RAG | MS Data Science | https://www.linkedin.com/in/sakshi-v-chavan | https://medium.com/@SakshiChavan
