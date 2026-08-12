@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: claims-adjudication-platform
+  data:
+    mongodb:
+      # Overridden by MONGODB_URI env var in real deployments.
+      # Local default assumes `docker compose up mongo`.
+      uri: ${MONGODB_URI:mongodb://localhost:27017/claims_adjudication}
+
+server:
+  port: ${PORT:8080}
+
+logging:
+  level:
+    com.sakshi.claims: INFO

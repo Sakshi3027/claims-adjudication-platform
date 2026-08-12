@@ -36,4 +36,21 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!--
+                    The Ubuntu-packaged Maven ships a very old default
+                    surefire version that can't discover JUnit 5 tests.
+                    Pinning this here so every module gets a modern one.
+                -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.2.5</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>
