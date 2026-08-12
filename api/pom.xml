@@ -45,6 +45,22 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
+                <!--
+                    We don't extend spring-boot-starter-parent (just import
+                    its dependency BOM), so the repackage goal doesn't get
+                    bound to the package phase automatically the way it
+                    normally would. Without this, `mvn package` produces a
+                    plain jar with no main manifest - runs fine via
+                    `spring-boot:run` locally, but fails the moment
+                    something tries to `java -jar` it, like the Dockerfile.
+                -->
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
