@@ -59,6 +59,8 @@ Each rule maps directly to a `.feature` file — the Gherkin scenario a complian
 
 ## Dashboard
 
+The analyst view below: a claim gets submitted through the form on the left, and the adjudication result comes back immediately underneath it, along with the plain-language reason behind the decision. This is the same flow an auditor sees when reviewing a flagged claim, just with an audit trail and override option added on top.
+
 ![Claim submission and adjudication result](docs/dashboard-approved.png)
 
 ---
