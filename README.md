@@ -55,6 +55,12 @@ Each rule maps directly to a `.feature` file — the Gherkin scenario a complian
 
 ---
 
+## Dashboard
+
+![Claim submission and adjudication result](docs/dashboard-approved.png)
+
+---
+
 ## Modules
 
 | Module | Description |
