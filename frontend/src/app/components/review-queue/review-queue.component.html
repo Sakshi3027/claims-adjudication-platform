@@ -1,0 +1,35 @@
+<div class="page">
+  <h1>Review queue</h1>
+  <p class="subtitle">Auditor view - claims flagged for manual review. Refreshes every 10 seconds.</p>
+
+  <div *ngIf="loading">Loading...</div>
+
+  <div class="empty" *ngIf="!loading && queue.length === 0">
+    Nothing in the queue right now.
+  </div>
+
+  <table class="queue-table" *ngIf="!loading && queue.length > 0">
+    <thead>
+      <tr>
+        <th>Claim #</th>
+        <th>Member</th>
+        <th>Type</th>
+        <th>Amount</th>
+        <th>Reason</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let claim of queue">
+        <td>{{ claim.claimNumber }}</td>
+        <td>{{ claim.memberId }}</td>
+        <td>{{ claim.claimType }}</td>
+        <td>{{ claim.totalAmount | number: '1.2-2' }}</td>
+        <td class="reason">{{ claim.adjudicationResult?.reason }}</td>
+        <td>
+          <a [routerLink]="['/claims', claim.id]">Review</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

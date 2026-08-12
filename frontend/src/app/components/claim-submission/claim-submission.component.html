@@ -1,0 +1,68 @@
+<div class="page">
+  <h1>Submit a claim</h1>
+  <p class="subtitle">Analyst view - submit a claim and see how it gets adjudicated in real time.</p>
+
+  <form (ngSubmit)="submit()" #form="ngForm" class="claim-form">
+    <div class="row">
+      <label>
+        Claim number
+        <input name="claimNumber" [(ngModel)]="claimNumber" required placeholder="CLM-2026-00841" />
+      </label>
+      <label>
+        Member ID
+        <input name="memberId" [(ngModel)]="memberId" required placeholder="MBR-55210" />
+      </label>
+    </div>
+
+    <div class="row">
+      <label>
+        Claim type
+        <select name="claimType" [(ngModel)]="claimType">
+          <option value="MEDICAL">Medical</option>
+          <option value="PHARMACY">Pharmacy</option>
+          <option value="DENTAL">Dental</option>
+        </select>
+      </label>
+      <label>
+        Diagnosis codes (comma separated)
+        <input name="diagnosisCodes" [(ngModel)]="diagnosisCodesInput" placeholder="E11.9, I10" />
+      </label>
+    </div>
+
+    <h3>Line items</h3>
+    <div class="line-item" *ngFor="let item of lineItems; let i = index">
+      <input [(ngModel)]="item.procedureCode" [name]="'procedureCode' + i" placeholder="Procedure code" required />
+      <input [(ngModel)]="item.amount" [name]="'amount' + i" type="number" min="0" step="0.01" placeholder="Amount" required />
+      <label class="checkbox">
+        <input [(ngModel)]="item.priorAuthRequired" [name]="'priorAuthRequired' + i" type="checkbox" />
+        Requires prior auth
+      </label>
+      <button type="button" class="remove-btn" (click)="removeLineItem(i)" [disabled]="lineItems.length === 1">
+        Remove
+      </button>
+    </div>
+    <button type="button" class="secondary-btn" (click)="addLineItem()">+ Add line item</button>
+
+    <label class="checkbox top-gap">
+      <input [(ngModel)]="priorAuthOnFile" name="priorAuthOnFile" type="checkbox" />
+      Prior authorization is on file for this claim
+    </label>
+
+    <button type="submit" class="primary-btn" [disabled]="!form.valid || submitting">
+      {{ submitting ? 'Adjudicating...' : 'Submit claim' }}
+    </button>
+  </form>
+
+  <div class="error" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+  <div class="result" *ngIf="lastResult">
+    <h2>Result</h2>
+    <div class="outcome" [ngClass]="lastResult.adjudicationResult?.outcome?.toLowerCase()">
+      {{ lastResult.adjudicationResult?.outcome }}
+    </div>
+    <p>{{ lastResult.adjudicationResult?.reason }}</p>
+    <p class="rules" *ngIf="lastResult.adjudicationResult?.matchedRuleIds?.length">
+      Matched rules: {{ lastResult.adjudicationResult?.matchedRuleIds?.join(', ') }}
+    </p>
+  </div>
+</div>

@@ -1,0 +1,150 @@
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+.back-link {
+  color: #1a5fb4;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.meta {
+  display: flex;
+  gap: 16px;
+  color: #5f6368;
+  font-size: 13px;
+  margin-bottom: 24px;
+}
+
+.status {
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.status.flagged {
+  background: #fdf0d5;
+  color: #a15c00;
+}
+
+.status.adjudicated {
+  background: #e3f4e6;
+  color: #1e7b34;
+}
+
+.status.pending {
+  background: #e8eaed;
+  color: #444;
+}
+
+.section {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+}
+
+.outcome {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.outcome.approved {
+  background: #e3f4e6;
+  color: #1e7b34;
+}
+
+.outcome.manual_review {
+  background: #fdf0d5;
+  color: #a15c00;
+}
+
+.outcome.denied {
+  background: #fbe4e2;
+  color: #b3261e;
+}
+
+.rules {
+  color: #5f6368;
+  font-size: 13px;
+}
+
+.trail {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.trail li {
+  padding: 10px 0;
+  border-bottom: 1px solid #eceef1;
+}
+
+.trail li:last-child {
+  border-bottom: none;
+}
+
+.trail-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.event-type {
+  font-weight: 600;
+}
+
+.timestamp {
+  color: #9aa0a6;
+}
+
+.trail-reason {
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+.trail-actor {
+  font-size: 12px;
+  color: #9aa0a6;
+  margin-top: 2px;
+}
+
+.override-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.override-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  color: #444;
+}
+
+.override-form input, .override-form select {
+  padding: 8px 10px;
+  border: 1px solid #d0d3d8;
+  border-radius: 6px;
+}
+
+.override-form button {
+  align-self: flex-start;
+  background: #1a5fb4;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+}
+
+.override-form button:disabled {
+  background: #a9b6c9;
+}

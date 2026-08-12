@@ -1,0 +1,135 @@
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+h1 {
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  color: #5f6368;
+  margin-top: 0;
+}
+
+.claim-form {
+  background: white;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  font-size: 13px;
+  color: #444;
+}
+
+input, select {
+  padding: 8px 10px;
+  border: 1px solid #d0d3d8;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.line-item {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.line-item input[type='text'], .line-item input:not([type]) {
+  flex: 2;
+}
+
+.checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+
+.top-gap {
+  margin-top: 12px;
+}
+
+.primary-btn {
+  margin-top: 20px;
+  background: #1a5fb4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.primary-btn:disabled {
+  background: #a9b6c9;
+}
+
+.secondary-btn {
+  background: none;
+  border: 1px dashed #a9b6c9;
+  color: #1a5fb4;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: #b3261e;
+  font-size: 12px;
+}
+
+.error {
+  margin-top: 16px;
+  color: #b3261e;
+}
+
+.result {
+  margin-top: 24px;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.outcome {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.outcome.approved {
+  background: #e3f4e6;
+  color: #1e7b34;
+}
+
+.outcome.manual_review {
+  background: #fdf0d5;
+  color: #a15c00;
+}
+
+.outcome.denied {
+  background: #fbe4e2;
+  color: #b3261e;
+}
+
+.rules {
+  color: #5f6368;
+  font-size: 13px;
+}

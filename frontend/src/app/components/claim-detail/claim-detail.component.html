@@ -1,0 +1,62 @@
+<div class="page" *ngIf="!loading && claim">
+  <a routerLink="/queue" class="back-link">&larr; Back to queue</a>
+
+  <h1>{{ claim.claimNumber }}</h1>
+  <div class="meta">
+    <span>Member {{ claim.memberId }}</span>
+    <span>{{ claim.claimType }}</span>
+    <span>{{ claim.totalAmount | number: '1.2-2' }}</span>
+    <span class="status" [ngClass]="claim.status.toLowerCase()">{{ claim.status }}</span>
+  </div>
+
+  <div class="section" *ngIf="claim.adjudicationResult">
+    <h2>Adjudication result</h2>
+    <div class="outcome" [ngClass]="claim.adjudicationResult.outcome.toLowerCase()">
+      {{ claim.adjudicationResult.outcome }}
+    </div>
+    <p>{{ claim.adjudicationResult.reason }}</p>
+    <p class="rules" *ngIf="claim.adjudicationResult.matchedRuleIds.length">
+      Matched rules: {{ claim.adjudicationResult.matchedRuleIds.join(', ') }}
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Audit trail</h2>
+    <ul class="trail">
+      <li *ngFor="let event of auditTrail">
+        <div class="trail-header">
+          <span class="event-type">{{ event.eventType }}</span>
+          <span class="timestamp">{{ event.timestamp | date: 'medium' }}</span>
+        </div>
+        <div class="trail-reason">{{ event.reason }}</div>
+        <div class="trail-actor">by {{ event.actorId }} ({{ event.actorRole }})</div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Override decision</h2>
+    <form (ngSubmit)="submitOverride()" #form="ngForm" class="override-form">
+      <label>
+        Your ID
+        <input name="overrideActorId" [(ngModel)]="overrideActorId" required placeholder="auditor-7" />
+      </label>
+      <label>
+        New outcome
+        <select name="overrideOutcome" [(ngModel)]="overrideOutcome">
+          <option value="APPROVED">Approved</option>
+          <option value="DENIED">Denied</option>
+        </select>
+      </label>
+      <label>
+        Reason
+        <input name="overrideReason" [(ngModel)]="overrideReason" required placeholder="Reviewed supporting docs, approving" />
+      </label>
+      <button type="submit" [disabled]="!form.valid || overriding">
+        {{ overriding ? 'Saving...' : 'Submit override' }}
+      </button>
+    </form>
+  </div>
+</div>
+
+<div class="page" *ngIf="loading">Loading...</div>
